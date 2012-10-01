@@ -1,0 +1,49 @@
+{ "name": "MapServer",
+  "scopeName": "source.syntax_name",
+  "fileTypes": ["map"],
+  "patterns": [
+    {
+      "match" : "\\b(MAP|WEB|END|METADATA|LEGEND|LABEL|SYMBOL|STYLE|POINTS|LAYER|CLASS|PROJECTION)\\b",
+      "name" : "entity.name.function.mapserver"
+    },
+    {
+      "match" : "\\b(STATUS|LOG|NAME|SHAPEPATH|EXTENT|UNITS|IMAGETYPE|FONTSET|CONFIG|LOG|IMAGEURL|TRANSPARENT|TYPE|FONT|SIZE|LINEJOINMAXSIZE|LINEJOIN|FILLED|CHARACTER|ANTIALIAS|PROCESSING|DATA|DUMP|TEMPLATE|OPACITY|COLOR|OUTLINECOLOR|POSITION|ANGLE|LABELITEM|LABELMAXSCALE|BACKGROUNDCOLOR|FILTER|OFFSET|PRIORITY|MINSIZE|WIDTH|EXPRESSION|TEXT|BUFFER|FORCE|PARTIALS|DEBUG)\\b",
+      "name" : "keyword.source.syntax_name"
+    },
+    {
+      "match" : "\\b([0-9]*)",
+      "name" : "constant.numeric.mapserver"
+    },
+    {
+      "match" : "(#).*$\n?",
+      "name" : "comment.line.number-sign.mapserver"
+    },
+    {
+      "match" : "(wms_title|wms_onlineresource|wms_srs|wms_extent|wfs_title|wfs_onlineresource|wfs_srs|gml_featureid|gml_include_items)",
+      "name" : "support.function.mapserver"
+    },
+    {
+      "begin" : "\"",
+      "end" : "\"",
+      "name" : "variable.complex.mapserver",
+      "patterns" : [
+        {
+          "include" : "$self"
+        },
+        {
+          "match" : "(wms_title|wms_onlineresource|wms_srs|wms_extent|wfs_title|wfs_onlineresource|wfs_srs)",
+          "name" : "support.function.mapserver"
+        },
+        {
+          "match" : "&#([0-9]*;)",
+          "name" : "constant.numeric.mapserver"
+        },
+        {
+          "match" : ".",
+          "name" : "string"
+        }
+      ]
+    }
+  ],
+  "uuid": "33b1e817-fad6-4f15-83dc-309e94888497"
+}
